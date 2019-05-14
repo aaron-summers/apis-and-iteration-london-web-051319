@@ -2,14 +2,14 @@ require 'rest-client'
 require 'json'
 require 'pry'
 
-def get_character_movies_from_api(character_name)
+def get_character_movies_from_api(character)
   #make the web request
-  response_string = RestClient.get('http://www.swapi.co/api/people/#{user_input}')
+  character_query = character
+  response_string = RestClient.get("https://swapi.co/api/people/?search=#{character_query}")
   response_hash = JSON.parse(response_string)
-
-
   # iterate over the response hash to find the collection of `films` for the given
   #   `character`
+  binding.pry
   # collect those film API urls, make a web request to each URL to get the info
   #  for that film
   # return value of this method should be collection of info about each film.
